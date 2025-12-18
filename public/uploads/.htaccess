@@ -1,0 +1,22 @@
+<IfModule mod_mime.c>
+  AddType video/mp4 .mp4
+  AddType video/webm .webm
+  AddType image/jpeg .jpg .jpeg
+  AddType image/png .png
+  AddType image/gif .gif
+  # Audio types
+  AddType audio/mpeg .mp3
+  AddType audio/mp4 .m4a
+  AddType audio/ogg .ogg
+  AddType audio/webm .weba
+  AddType audio/wav .wav
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(mp4|webm|jpg|jpeg|png|gif|mp3|m4a|ogg|weba|wav)$">
+    Header unset Content-Disposition
+    Header set Content-Disposition "inline"
+  </FilesMatch>
+</IfModule>
+
+Options -Indexes

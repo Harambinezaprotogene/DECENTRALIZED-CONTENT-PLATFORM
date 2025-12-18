@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Dev toggle for pay-per-download fake verification (set to 0 to disable)
+SetEnv PPD_FAKE_SUCCESS 0
+SetEnv PPD_USDT_ADDRESS 0xa9e4a162580c8c72343ecf5aa45b31e62cfb12f3
+SetEnv PPD_RPC_URL https://polygon-amoy-bor-rpc.publicnode.com
+SetEnv PPD_TOKEN_DECIMALS 6
+SetEnv PPD_PRICE_USDT 10
+
+# Handle API requests
+RewriteRule ^api/(.*)$ api_router.php [QSA,L]
+
+# Only redirect the exact root path to viewer dashboard
+RewriteRule ^/?$ viewer_dashboard/dashboard.php [L]
